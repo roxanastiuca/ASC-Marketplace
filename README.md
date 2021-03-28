@@ -59,7 +59,7 @@ fi accesate in sigurante si de producator si de oricati clienti);
 Lock.
 
 Cand un consumator cauta un obiect, se uita pe rand prin cozile tuturor
-consumatorilor. Ca sa evitam situatia //rara// in care fix atunci se
+consumatorilor. Ca sa evitam situatia *rara* in care fix atunci se
 inregistreaza un producator si poate inca nu are coada creata, am folosit
 producer_id_generator_lock pentru a obtine numarul de producatori actuali.
 
