@@ -70,6 +70,9 @@ https://github.com/roxanastiuca/ASC-Marketplace
 Datorita separarii zonei de lucru a producatorilor, elementele de sincronizare
 sunt minime.
 Am sincronizat toate operatiile din SafeList pentru a fi sigura de
-corectitudine. Checkerul mergea si fara niciun lock in SafeList, dar am
-citit ca in unele implementari Python, nu toate operatiile pe liste sunt
-thread-safe.
+corectitudine. Checkerul mergea si fara niciun lock in SafeList, dar putea exista
+urmatoarea situatie:
+- thread1: put() -> maxsize != len(list) => nu da exceptia Full.
+- thread2: put_anyway() -> append in lista, acum maxsize == len(list).
+- thread1: append in lista, chiar daca teoretic nu mai e loc.
+Asemenator se putea intampla pt. put() si remove().

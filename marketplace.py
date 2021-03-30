@@ -11,7 +11,10 @@ from queue import Full
 
 class SafeList:
     """
-    Class that represents a Thread-safe List. This makes sure that no concurrent issue can arise.
+    Class that represents a Thread-safe List. This makes sure that no concurrent issue can arise
+    (for example: thread1 calls put(), checks maxsize and doesn't raise Full exception;
+    thread2 calls put_anyway() and maxsize is reached; thread1 appends item even if maxsize was
+    reached).
     This implementation also allows a maxsize, which restricts insertions (it can also be
     disregarded through the use of "put_anyway").
     """
